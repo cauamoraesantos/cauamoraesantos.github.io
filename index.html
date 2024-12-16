@@ -1,57 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Cadastro</title>
+    <title>Modelo CSS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        * {
+            box-sizing: border-box;
         }
-        .sucesso {
-            color: green;
-            font-weight: bold;
-            margin-top: 20px;
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Estilo do cabeçalho */
+        header {
+            background-color: #666;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        /* Criação de duas colunas lado a lado */
+        nav {
+            float: left;
+            width: 30%;
+            height: 300px;
+            background: #ccc;
+            padding: 20px;
+        }
+
+        /* Estilo da lista no menu */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        article {
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: #f1f1f1;
+            height: 300px;
+        }
+
+        /* Limpeza dos floats */
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Estilo do rodapé */
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Layout responsivo */
+        @media (max-width: 600px) {
+
+            nav,
+            article {
+                width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
+
 <body>
-    <h2>Formulário de Cadastro</h2>
 
-    <form id="formulario">
-        <!-- Campo para o Primeiro Nome -->
-        <label for="fname">Primeiro nome:</label><br>
-        <input type="text" id="fname" name="fname" placeholder="Digite seu primeiro nome" required><br><br>
-        
-        <!-- Campo para o Sobrenome -->
-        <label for="lname">Sobrenome:</label><br>
-        <input type="text" id="lname" name="lname" placeholder="Digite seu sobrenome" required><br><br>
-        
-        <!-- Botão de Envio -->
-        <input type="submit" value="Confirmar">
-    </form>
+    <h2>Layout CSS Float</h2>
+    <p>Neste exemplo, criamos um cabeçalho, duas colunas/caixas e um rodapé. Em telas menores, as colunas irão se empilhar
+        verticalmente.</p>
+    <p>Redimensione a janela do navegador para ver o efeito responsivo.</p>
 
-    <!-- Local onde a mensagem será exibida -->
-    <div id="mensagem" class="sucesso"></div>
+    <!-- Cabeçalho -->
+    <header>
+        <h2>Cidades</h2>
+    </header>
 
-    <script>
-        // Captura o evento de envio do formulário
-        document.getElementById("formulario").addEventListener("submit", function(event) {
-            // Evita o comportamento padrão do formulário (recarregar a página)
-            event.preventDefault();
+    <!-- Conteúdo Principal -->
+    <section>
+        <!-- Menu Lateral -->
+        <nav>
+            <ul>
+                <li><a href="https://pt.wikipedia.org/wiki/Londres" target="_blank">Londres</a></li>
+                <li><a href="https://pt.wikipedia.org/wiki/Paris" target="_blank">Paris</a></li>
+                <li><a href="https://pt.wikipedia.org/wiki/T%C3%B3quio" target="_blank">Tóquio</a></li>
+            </ul>
+        </nav>
 
-            // Captura os valores dos campos
-            const fname = document.getElementById('fname').value;
-            const lname = document.getElementById('lname').value;
+        <!-- Conteúdo Principal -->
+        <article>
+            <h1>Londres</h1>
+            <p>Londres é a capital da Inglaterra. É a cidade mais populosa do Reino Unido, com uma área metropolitana
+                que ultrapassa 13 milhões de habitantes.</p>
+            <p>Situada ao longo do Rio Tâmisa, Londres é um importante assentamento há dois milênios. Sua história
+                remonta à fundação pelos romanos, que a nomearam Londinium.</p>
+        </article>
+    </section>
 
-            // Exibe a mensagem de sucesso diretamente na página
-            const mensagemDiv = document.getElementById('mensagem');
-            mensagemDiv.textContent = `Formulário enviado com sucesso! Obrigado, ${fname} ${lname}.`;
+    <!-- Rodapé -->
+    <footer>
+        <p>Rodapé</p>
+    </footer>
 
-            // Limpa os campos do formulário
-            event.target.reset();
-        });
-    </script>
 </body>
+
 </html>

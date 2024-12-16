@@ -1,18 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .sucesso {
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 <body>
-    <h2>Formulários HTML</h2>
+    <h2>Formulário de Cadastro</h2>
 
-    <form action="data.html">
+    <form id="formulario">
+        <!-- Campo para o Primeiro Nome -->
         <label for="fname">Primeiro nome:</label><br>
-        <input type="text" id="fname" name="fname" value="Ariangelo"><br>
+        <input type="text" id="fname" name="fname" placeholder="Digite seu primeiro nome" required><br><br>
         
+        <!-- Campo para o Sobrenome -->
         <label for="lname">Sobrenome:</label><br>
-        <input type="text" id="lname" name="lname" value="Hauer Dias"><br><br>
+        <input type="text" id="lname" name="lname" placeholder="Digite seu sobrenome" required><br><br>
         
+        <!-- Botão de Envio -->
         <input type="submit" value="Confirmar">
     </form>
 
-    <p>Se você clicar no botão "Confirmar", os dados do formulário serão enviados".</p>
+    <!-- Local onde a mensagem será exibida -->
+    <div id="mensagem" class="sucesso"></div>
+
+    <script>
+        // Captura o evento de envio do formulário
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            // Evita o comportamento padrão do formulário (recarregar a página)
+            event.preventDefault();
+
+            // Captura os valores dos campos
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+
+            // Exibe a mensagem de sucesso diretamente na página
+            const mensagemDiv = document.getElementById('mensagem');
+            mensagemDiv.textContent = `Formulário enviado com sucesso! Obrigado, ${fname} ${lname}.`;
+
+            // Limpa os campos do formulário
+            event.target.reset();
+        });
+    </script>
 </body>
 </html>

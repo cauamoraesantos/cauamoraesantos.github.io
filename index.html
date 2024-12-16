@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo de Página com CSS</title>
+    <title>Guia de Cidades</title>
     <style>
-        /* Configurações gerais */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,33 +15,25 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
-            background-color: #f9f9f9;
             color: #333;
         }
 
-        /* Estilização do cabeçalho */
+        /* Cabeçalho */
         header {
-            background: linear-gradient(135deg, #4CAF50, #388E3C);
-            padding: 20px;
+            background-color: #666;
+            padding: 30px;
             text-align: center;
+            font-size: 35px;
             color: white;
-            font-size: 28px;
-            text-transform: uppercase;
         }
 
-        /* Estilização do menu lateral */
+        /* Menu Lateral */
         nav {
             float: left;
-            width: 25%;
-            background: #f1f1f1;
+            width: 30%;
+            height: 300px;
+            background-color: #ccc;
             padding: 20px;
-            height: auto;
-        }
-
-        nav h3 {
-            margin-bottom: 10px;
-            color: #333;
-            text-transform: uppercase;
         }
 
         nav ul {
@@ -50,105 +41,138 @@
         }
 
         nav ul li {
-            margin: 10px 0;
+            margin-bottom: 10px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: #4CAF50;
+            color: #333;
             font-weight: bold;
-            transition: color 0.3s;
         }
 
         nav ul li a:hover {
-            color: #388E3C;
+            color: #666;
         }
 
-        /* Estilização do conteúdo principal */
+        /* Conteúdo Principal */
         article {
             float: left;
-            width: 75%;
+            width: 70%;
             padding: 20px;
-            background: #fff;
-            height: auto;
-            border-left: 2px solid #ddd;
+            background-color: #f1f1f1;
+            height: 300px;
         }
 
         article h1 {
+            color: #333;
             margin-bottom: 10px;
-            color: #388E3C;
         }
 
         article p {
-            margin-bottom: 15px;
             text-align: justify;
+        }
+
+        /* Limpeza dos floats */
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
         }
 
         /* Rodapé */
         footer {
-            clear: both;
-            background-color: #4CAF50;
+            background-color: #777;
             color: white;
             text-align: center;
             padding: 10px 0;
-            margin-top: 20px;
         }
 
         /* Responsividade */
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
 
             nav,
             article {
                 width: 100%;
-                float: none;
-                padding: 10px;
-            }
-
-            header {
-                font-size: 24px;
+                height: auto;
             }
         }
     </style>
 </head>
 
 <body>
-
     <!-- Cabeçalho -->
     <header>
         <h1>Guia de Cidades</h1>
     </header>
 
-    <!-- Conteúdo Principal -->
+    <!-- Conteúdo -->
     <section>
-        <!-- Menu de Navegação -->
+        <!-- Menu Lateral -->
         <nav>
-            <h3>Cidades</h3>
             <ul>
-                <li><a href="https://pt.wikipedia.org/wiki/Londres" target="_blank">Londres</a></li>
-                <li><a href="https://pt.wikipedia.org/wiki/Paris" target="_blank">Paris</a></li>
-                <li><a href="https://pt.wikipedia.org/wiki/T%C3%B3quio" target="_blank">Tóquio</a></li>
+                <li><a href="#" onclick="mostrarTexto('Londres')">Londres</a></li>
+                <li><a href="#" onclick="mostrarTexto('Paris')">Paris</a></li>
+                <li><a href="#" onclick="mostrarTexto('Tóquio')">Tóquio</a></li>
             </ul>
         </nav>
 
-        <!-- Artigo com informações -->
-        <article>
+        <!-- Texto Dinâmico -->
+        <article id="conteudo">
             <h1>Londres</h1>
             <p>
-                Londres é a capital da Inglaterra e uma das cidades mais influentes do mundo. Com uma população de mais de 13 milhões
-                de habitantes em sua região metropolitana, a cidade é um polo cultural, econômico e histórico.
+                Londres é a capital da Inglaterra. É a cidade mais populosa do Reino Unido, com mais de 13 milhões de habitantes em sua
+                área metropolitana.
             </p>
             <p>
-                Situada às margens do Rio Tâmisa, Londres foi fundada pelos romanos no século I com o nome de Londinium. Desde então,
-                tornou-se um importante centro global, repleto de marcos como o Big Ben, a Torre de Londres e o Palácio de Buckingham.
+                Situada às margens do Rio Tâmisa, Londres é conhecida por sua história que remonta à época dos romanos, sendo fundada
+                como Londinium.
             </p>
         </article>
     </section>
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2024 Guia de Cidades. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Guia de Cidades</p>
     </footer>
 
+    <!-- JavaScript para alterar o conteúdo -->
+    <script>
+        function mostrarTexto(cidade) {
+            const conteudo = document.getElementById("conteudo");
+            if (cidade === "Londres") {
+                conteudo.innerHTML = `
+                    <h1>Londres</h1>
+                    <p>
+                        Londres é a capital da Inglaterra. É a cidade mais populosa do Reino Unido, com mais de 13 milhões de habitantes em sua
+                        área metropolitana.
+                    </p>
+                    <p>
+                        Situada às margens do Rio Tâmisa, Londres é conhecida por sua história que remonta à época dos romanos, sendo fundada
+                        como Londinium.
+                    </p>`;
+            } else if (cidade === "Paris") {
+                conteudo.innerHTML = `
+                    <h1>Paris</h1>
+                    <p>
+                        Paris é a capital da França e uma das cidades mais visitadas do mundo. Conhecida como "Cidade Luz", Paris é famosa por sua
+                        arquitetura icônica e atrações culturais.
+                    </p>
+                    <p>
+                        A Torre Eiffel, o Museu do Louvre e a Catedral de Notre-Dame são alguns dos marcos mais reconhecidos internacionalmente.
+                    </p>`;
+            } else if (cidade === "Tóquio") {
+                conteudo.innerHTML = `
+                    <h1>Tóquio</h1>
+                    <p>
+                        Tóquio é a capital do Japão e uma das cidades mais avançadas tecnologicamente do mundo. Combinando modernidade e tradição,
+                        Tóquio encanta seus visitantes.
+                    </p>
+                    <p>
+                        O Palácio Imperial, templos históricos e distritos futuristas, como Shibuya e Akihabara, tornam a cidade única.
+                    </p>`;
+            }
+        }
+    </script>
 </body>
 
 </html>
